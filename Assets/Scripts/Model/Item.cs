@@ -3,7 +3,7 @@ using System;
 
 namespace Assets.Scripts.Model
 {
-    public class Item: IItem
+    public class Item
     {
         private static int _itemCount;
         private int _id;
