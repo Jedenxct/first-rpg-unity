@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour {
     public static List<Item> items = new List<Item>();
 
     private ItemRepository _repository;
+    private PlayerBalance _playerBalance;
     private bool _shown;
 
     private bool _showTooltip;
@@ -29,6 +30,7 @@ public class Inventory : MonoBehaviour {
     {
         // search for repository
         _repository = GameObject.Find("Item Repository").GetComponent<ItemRepository>();
+        _playerBalance = GameObject.FindGameObjectWithTag("Balance").GetComponent<PlayerBalance>();
 
         // initialize slots
         for (int i = 0; i < (slotsX * slotsY); i++)
@@ -54,6 +56,7 @@ public class Inventory : MonoBehaviour {
         if (_shown)
         {
             DrawInventory();
+            DrawBalanceBox();
 
             if (_showTooltip)
             {
@@ -70,6 +73,12 @@ public class Inventory : MonoBehaviour {
         {
             GUI.DrawTexture(new Rect(e.mousePosition.x - 32, e.mousePosition.y - 32, 64, 64), _draggedItem.Icon);
         }   
+    }
+
+    private void DrawBalanceBox()
+    {
+        var rectangle = new Rect(Screen.width - 250, Screen.height - 280, 200, 30);
+        GUI.Box(rectangle, String.Format("{0}", _playerBalance.Balance));
     }
 
     private void DrawInventory()
