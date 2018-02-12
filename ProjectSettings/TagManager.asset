@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Repository
+  - Balance
   layers:
   - Default
   - TransparentFX
