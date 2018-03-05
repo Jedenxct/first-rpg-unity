@@ -9,9 +9,6 @@ public class ItemRepository : MonoBehaviour {
 
     private void Awake()
     {
-        //test
-
-
         if (itemRepository == null)
         {
             DontDestroyOnLoad(gameObject);
